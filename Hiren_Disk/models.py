@@ -13,6 +13,7 @@ class DiskBox(models.Model):
 class DiskList(models.Model):
 	diskbox = models.ForeignKey(DiskBox)
 	diskName = models.CharField(max_length=500, verbose_name=u'Disk Name')
+	diskNo = models.IntegerField(max_length=128, verbose_name = "Disk Number")
 	class Meta:
 		verbose_name = "Disk List"
 	def __unicode__(self):
