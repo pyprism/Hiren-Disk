@@ -1,7 +1,17 @@
 from commands import getoutput
 
-rawMountedDir = getoutput("lsblk -o MOUNTPOINT")
+from os import chdir , listdir , getcwd
 
-mountDir = ""
+from getpass import getuser
 
- (?<=prism/).*?(?<=\\)
+def hiren():
+	rawMountedDir = getoutput("volname /dev/sr0")
+	while True:
+		if rawMountedDir == "volname: No medium found" :
+			rawMountedDir = getoutput("volname /dev/sr0")
+		elif rawMountedDir == "volname: Input/output error":
+			rawMountedDir = getoutput("volname /dev/sr0")
+		else:
+			break
+	chdir("/media/" + getuser() + "/" + rawMountedDir.rstrip() + "/")
+	return listdir(getcwd())
