@@ -1,9 +1,7 @@
 Django==1.6.1
 argparse==1.2.1
-beautifulsoup4==4.3.2
-distribute==0.6.34
-django-debug-toolbar==1.0
-django-tastypie==0.11.0
+distribute==0.7.3
+django-debug-toolbar==1.0.1
 ipython==1.1.0
 python-dateutil==2.2
 python-mimeparse==0.1.4
