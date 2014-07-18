@@ -1,0 +1,16 @@
+{
+  "name": "hiren",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pyprism/Hiren-Disk",
+  "authors": [
+    "pyprism <git.pyprism@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
