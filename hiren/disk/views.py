@@ -4,4 +4,10 @@ from .models import Disk, Box
 
 
 def index(request):
-    return render_to_response('index.html')
+    return render_to_response('index.html', {'browse': "browse", "add": "x"})
+
+
+def browse(request):
+    no = Box.objects.values('disk_no', 'created_at')
+    print(no)
+    return render_to_response('browse.html', { 'no' : no})
