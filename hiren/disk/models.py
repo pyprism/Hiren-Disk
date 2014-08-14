@@ -8,7 +8,8 @@ class Box(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.disk_no)
+        #return str(self.disk_no)
+        return "%s %s" % (self.disk_no, self.created_at)
 
 
 class Disk(models.Model):
