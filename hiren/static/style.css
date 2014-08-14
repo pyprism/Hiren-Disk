@@ -1,0 +1,56 @@
+body {
+    padding-top: 40px;
+}
+
+.form-signup, .form-signin {
+    width: 400px;
+    margin: 0 auto;
+}
+
+
+.center {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -100px;
+}
+
+html {
+    background: url(xindex.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+
+body {
+    margin:0;
+    font-family: 'Gloria Hallelujah', cursive;
+    text-align:center;
+    color: #00b3ee;
+}
+
+.welcome {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -100px;
+}
+
+a, a:visited {
+    text-decoration:none;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 16px 0 0 0;
+}
