@@ -1,6 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
- {{ no }}
+<table class="table table-striped table-bordered">
+   <thead>
+    <tr>
+       <td>Box No.</td>
+       <td>Date</td>
+    </tr>
+   </thead>
+   <tbody>
+   {% for k in no %}
+    <tr>
+        <td>{{ k.disk_no }}</td>
+        <td>{{ k.created_at }}</td>
+    </tr>
+   {% endfor %}
+   </tbody>
+</table>
+
+
 
 {% endblock %}
