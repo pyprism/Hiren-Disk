@@ -11,7 +11,7 @@
    <tbody>
    {% for k in no %}
     <tr>
-        <td>{{ k.disk_no }}</td>
+        <td><a href="browse/{{ k.disk_no }}/">{{ k.disk_no }}</a></td>
         <td>{{ k.created_at }}</td>
     </tr>
    {% endfor %}
