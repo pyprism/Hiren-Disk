@@ -22,7 +22,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="https://github.com/pyprism/Hiren-Disk" class="fa fa-github"> Source Code</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="/logout" class="fa fa-sign-out"> Logout </a></li>
+                    {% else %}
                     <li data-toggle="modal" data-target="#myModal" ><a href="#" class="fa fa-sign-in"> Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -30,6 +34,11 @@
 </div>
 
 <div class="container">
+    {% if  messages %}
+     {% for message in messages %}
+    <div class="alert alert-danger" role="alert"> {{  message }} </div>
+    {% endfor %}
+    {% endif %}
     {% block content %}{% endblock %}
 </div>
 
