@@ -9,6 +9,9 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'disk.views.index'),
-    url(r"^browse/?$", 'disk.views.browse'),
-    url(r"^login/?$", 'disk.views.login'),
+    url(r"^login$", 'disk.views.login'),
+    url(r"^logout$", 'disk.views.logout'),
+    url(r"^browse$", 'disk.views.browse'),
+    url(r"^add$", 'disk.views.add'),
+    url(r"^browse/(?P<disk>\d+)/$", 'disk.views.disk_names'),
 )
