@@ -27,15 +27,16 @@ def login(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('pass')
-        #print(email, password)
         user = auth.authenticate(username=username, password=password)
         if user:
+            auth.login(request, user)
             return redirect('/add')
         else:
             messages.error(request, 'Username/Password is not valid!')
             return redirect(request.path)
     else:
-        return redirect("/browse")
+        #return redirect("/browse")
+        return redirect('/add')
 
 
 def logout(request):
@@ -44,7 +45,7 @@ def logout(request):
 
 
 def add(request):
-    if not request.user.is_authenticated():
-        return HttpResponse('logg')
+    if request.user.is_authenticated():
+        return render(request, 'add.html')
     else:
-        return HttpResponse("OK")
+        return HttpResponse("U r not logged in")
