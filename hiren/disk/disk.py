@@ -31,8 +31,13 @@ def hiren():
             raw_mounted_dir = subprocess.check_output(["volname /dev/sr0"])
         else:
             break
-    #print(raw_mounted_dir.strip())
-    os.chdir("/media/" + getpass.getuser() + "/" + raw_mounted_dir.rstrip().decode('utf-8').replace("_", " ") + "/")
-    return os.listdir(os.getcwd())
+    print(raw_mounted_dir.strip().decode('utf-8').replace("_", " "))
+    hiren = raw_mounted_dir.strip().decode('utf-8').replace("_", "\ ") + "/"
+    print(hiren)
+    os.chdir("/media/" + getpass.getuser() + "/" + hiren)
+    #os.chdir("/media/" + getpass.getuser() + "/" + raw_mounted_dir.strip().decode('utf-8').replace("_", " ") + "/")
+    #a = subprocess.check_output(["ls", "/media/" + getpass.getuser() + "/" + raw_mounted_dir.strip().decode('utf-8').replace("_", "\ ") + "/"])
+    #print(a.decode('utf-8'))
+    #return os.listdir(os.getcwd())
 
 hiren()
