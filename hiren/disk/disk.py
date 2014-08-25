@@ -24,22 +24,36 @@ import getpass
 
 def hiren():
     raw_mounted_dir = subprocess.check_output(["volname", "/dev/sr0"])
-    while True:
-        if raw_mounted_dir == "volname: No medium found":
-            raw_mounted_dir = subprocess.check_output(["volname /dev/sr0"])
-        elif raw_mounted_dir == "volname: Input/output error":
-            raw_mounted_dir = subprocess.check_output(["volname /dev/sr0"])
-        else:
+    mounted_dir = raw_mounted_dir.strip().decode('utf-8').replace("_", " ")
+    list_string = list(mounted_dir)
+    counter = 0
+    for i in mounted_dir:
+        if " " == i:
+            list_string[counter] = "\ "
             break
-    hiren =raw_mounted_dir.rstrip().decode("utf-8").lower()
-    #this will check the name of cd/dvd drive
-    dvdurl=""
-    for drive_name in os.listdir("/media/"+getpass.getuser()+"/"):
-        if drive_name.lower()==hiren:
-            dvdurl=drive_name
-            break
+        counter = counter + 1
+    disk = "".join(list_string)
+    print(disk)
 
-    os.chdir("/media/"+getpass.getuser()+"/"+dvdurl)
+    # while True:
+    #     if raw_mounted_dir == "volname: No medium found":
+    #         raw_mounted_dir = subprocess.check_output(["volname /dev/sr0"])
+    #     elif raw_mounted_dir == "volname: Input/output error":
+    #         raw_mounted_dir = subprocess.check_output(["volname /dev/sr0"])
+    #     else:
+    #         break
+    # hiren = raw_mounted_dir.rstrip().decode("utf-8").lower()
+    # print(hiren)
+    # #this will check the name of cd/dvd drive
+    # dvdurl=""
+    # for drive_name in os.listdir("/media/"+getpass.getuser()+"/"):
+    #     if drive_name.lower() == hiren:
+    #         dvdurl = drive_name
+    #         break
+    # print(dvdurl)
+    #os.chdir("/media/" + getpass.getuser() + "/" + disk)
+    #print(os.getcwd)
+    print(os.listdir("/media/" + getpass.getuser() + "/" + disk))
 """
     #walking through the mounted devices this is real naive :P
     for root, dirs, files in os.walk("/media/"+getpass.getuser()+"/"):
