@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hiren</title>
-    <link rel="shortcut icon" type="image/png" href="{{STATIC_URL}}/favicon.ico"/>
     {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
@@ -76,5 +76,7 @@
 
 <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
 <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'simpleStorage/simpleStorage.js' %}"></script>
+<script src="{% static 'script.js' %}"></script>
 </body>
 </html>
