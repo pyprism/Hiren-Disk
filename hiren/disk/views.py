@@ -3,8 +3,8 @@ from .models import Disk, Box
 from django.contrib import auth
 from django.contrib import messages
 from django.http import HttpResponse
-# Create your views here.
-
+from .disk import hiren
+import json
 
 def index(request):
     return render(request, 'index.html')
@@ -46,8 +46,12 @@ def logout(request):
 
 def add(request):
     if request.user.is_authenticated():
-        return render(request, 'add.html')
+        if request.method == "POST":
+            disk = request.POST.get('disk')
+            box = request.POST.get('box')
+            hiren(disk, box)
+            return render(request, 'add.html', {'success', "Database Updated"})
+        else:
+            return render(request, 'add.html')
     else:
         return HttpResponse("U r not logged in")
-
-
