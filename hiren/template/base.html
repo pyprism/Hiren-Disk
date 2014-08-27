@@ -17,14 +17,14 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                 </button>
-                <a class="navbar-brand" href="#">Hiren</a>
+                <a class="navbar-brand" href="/">Hiren</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="https://github.com/pyprism/Hiren-Disk" class="fa fa-github"> Source Code</a></li>
+                    <li><a href="https://github.com/pyprism/Hiren-Disk" target="_blank" class="fa fa-github"> Source Code</a></li>
                     <li><a href="/browse" class="fa fa-square-o"> Browse</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="/Add" class="fa fa-plus-square-o"> Add </a></li>
+                    <li><a href="/add" class="fa fa-plus-square-o"> Add </a></li>
                     <li><a href="/logout" class="fa fa-sign-out"> Logout </a></li>
                     {% else %}
                     <li data-toggle="modal" data-target="#myModal" ><a href="#" class="fa fa-sign-in"> Login</a></li>

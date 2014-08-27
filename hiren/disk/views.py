@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return render(request, 'index.html', {'browse': "browse", "add": "x"})
+    return render(request, 'index.html')
 
 
 def browse(request):
@@ -49,3 +49,5 @@ def add(request):
         return render(request, 'add.html')
     else:
         return HttpResponse("U r not logged in")
+
+
