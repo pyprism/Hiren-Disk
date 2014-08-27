@@ -1,10 +1,16 @@
 import subprocess
 import os
 import getpass
+from .models import Box, Disk
+
+#TODO error handling and better response !
 
 
-def hiren():
-    raw_mounted_dir = subprocess.check_output(["volname", "/dev/sr0"])
+def hiren(disk, box):
+    try:
+        raw_mounted_dir = subprocess.check_output(["volname", "/dev/sr0"])
+    except:
+        pass
     hiren = raw_mounted_dir.rstrip().decode("utf-8").lower().replace("_", " ")
     #this will check the name of cd/dvd drive
     dvdurl = ""
@@ -13,4 +19,9 @@ def hiren():
             dvdurl = drive_name
             break
 
-    return os.listdir("/media/"+getpass.getuser()+"/"+dvdurl)
+    content = os.listdir("/media/"+getpass.getuser()+"/"+dvdurl)
+    b = Box(disk_no=box)
+    b.save()
+    a = Disk(serial=disk, title=content)
+    a.save()
+    print("x")
