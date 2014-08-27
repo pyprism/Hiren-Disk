@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-        <button class="circle">Eject</button>
+<div class="col-sm-6 col-md-4 col-md-offset-4">
+    <form role="form" method="post" enctype="application/x-www-form-urlencoded" action="/add">
+            {% csrf_token %}
+            <div class="form-group">
+                        <label>Box Number</label>
+                        <input type="number" class="form-control" name="box" id="box" placeholder="Enter Box Number">
+                    </div>
+                    <div class="form-group">
+                        <label>Disk Number</label>
+                        <input type="number" class="form-control" name="disk" id="disk" placeholder="Disk number">
+                    </div>
+            <button type="submit" class="circle" id="add">Add</button>
+         </form>
+    <p class="text-success"> {{ success }}</p>
+</div>
+
 {% endblock %}
