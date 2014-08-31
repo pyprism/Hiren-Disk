@@ -7,6 +7,7 @@ from .models import Box, Disk
 
 
 def hiren():
+    nothing = ""
     try:
         raw_mounted_dir = subprocess.check_output(["volname", "/dev/sr0"])
     except:
@@ -20,13 +21,17 @@ def hiren():
                 dvdurl = drive_name
                 break
 
-        return os.listdir("/media/"+getpass.getuser()+"/"+dvdurl)
+        list_content = os.listdir("/media/"+getpass.getuser()+"/"+dvdurl)
+        for i in list_content:  # convert list to simple string ! its not a efficient way ;)
+            nothing = nothing + i + " "
+        return nothing
 
 
-def save_db(disk, box):
-    box_obj = Box.objects.filter(box_no=disk)
+def save_db(box, disk):
+    box_obj = Box.objects.get(box_no=box)
     if box_obj:
-        a = Disk(disk_no=box_obj, serial=disk, contents=content)
+        #xoxo = Box.objects.get(box_no=box)
+        a = Disk(disk_no=box_obj, serial=disk, contents=hiren())
         a.save()
     else:
         b = Box(box_no=box)
