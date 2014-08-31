@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     $( "#add" ).click(function( event ) {
        //event.preventDefault();
-       simpleStorage.set("disk", $('#disk').val, {TTL: 100000});
-       simpleStorage.set("box", $('#box').val, {TTL: 100000});
+       simpleStorage.set("disk", $('#disk').val, {TTL: 1000000});
+       simpleStorage.set("box", $('#box').val, {TTL: 1000000});
     });
 });
