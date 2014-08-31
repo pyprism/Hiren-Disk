@@ -3,20 +3,20 @@ from .models import Disk, Box
 from django.contrib import auth
 from django.contrib import messages
 from django.http import HttpResponse
-from .disk import hiren
-import json
+from .disk import save_db
+
 
 def index(request):
     return render(request, 'index.html')
 
 
 def browse(request):
-    no = Box.objects.values('disk_no', 'created_at')
-    return render(request, 'browse.html', {'no': no})
+    boxs = Box.objects.values('box_no', 'created_at')
+    return render(request, 'browse.html', {'boxs': boxs})
 
 
 def disk_names(request, disk):
-    names = Disk.objects.filter(box_no=disk)
+    names = Disk.objects.filter(disk_no=disk)
     if names:
         return render(request, 'names.html', {'names': names})
     else:
@@ -47,11 +47,19 @@ def logout(request):
 def add(request):
     if request.user.is_authenticated():
         if request.method == "POST":
-            disk = request.POST.get('disk')
             box = request.POST.get('box')
-            hiren(disk, box)
-            return render(request, 'add.html', {'success', "Database Updated"})
+            disk = request.POST.get('disk')
+            save_db(box, disk)
+            return render(request, 'add.html', {'success': "Database Updated"})
         else:
             return render(request, 'add.html')
     else:
         return HttpResponse("U r not logged in")
+
+
+def search(request):
+    if request.method == 'POST':
+        boxs = Box.objects.values('box_no', 'created_at')
+        search_term = request.POST.get('search', models=(Box.objects.values('box_no'),))
+        result = Disk.objects.search(search_term)
+        return render(request, 'browse.html', {'search' : result, 'boxs': boxs})
