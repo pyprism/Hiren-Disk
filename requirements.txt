@@ -4,3 +4,4 @@ django-debug-toolbar==1.2.1
 djorm-ext-pgfulltext==0.10
 psycopg2==2.5.3
 sqlparse==0.1.11
+django-haystack==2.2.0
