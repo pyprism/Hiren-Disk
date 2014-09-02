@@ -4,7 +4,7 @@
 
 {% if boxs %}
 
-<div class="row"> <!-- search box -->
+<!-- <div class="row"> &lt;!&ndash; search box &ndash;&gt;
     <div class="col-sm-6 col-md-4 col-md-offset-4">
      <form role="form" method="post" enctype="application/x-www-form-urlencoded" action="/search">
          {% csrf_token %}
@@ -20,23 +20,8 @@
 
 </div>
 <br/>
-<ul>
-    {% for result in search %}
-        <li>
-            <article>
-                <h1>
-                    {% if result.url %}<a href="{{result.url}}">{% endif %}
-                    {{result.title}}
-                    {% if result.url %}</a>{% endif %}
-                </h1>
-                {% if result.description %}
-                    <p>{{result.description}}</p>
-                {% endif %}
-            </article>
-        </li>
-    {% endfor %}
-</ul>  <!-- end of search box -->
-<br/>
+  &lt;!&ndash; end of search box &ndash;&gt;
+<br/>-->
 
 <table class="table table-striped table-bordered">
     <thead>
