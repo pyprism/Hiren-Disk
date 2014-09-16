@@ -3,6 +3,7 @@ from .models import Disk, Box
 from django.contrib import auth
 from django.contrib import messages
 from django.http import HttpResponse
+from django.core import serializers
 from .disk import save_db
 
 
@@ -63,3 +64,8 @@ def search(request):
         search_term = request.POST.get('search', models=(Box.objects.values('box_no'),))
         result = Disk.objects.search(search_term)
         return render(request, 'browse.html', {'search' : result, 'boxs': boxs})
+
+
+def json(request):
+    data = serializers.serialize("json", Disk.objects.all())
+    return HttpResponse(data)
