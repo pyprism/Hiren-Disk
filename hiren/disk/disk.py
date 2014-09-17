@@ -23,19 +23,18 @@ def hiren():
 
         list_content = os.listdir("/media/"+getpass.getuser()+"/"+dvdurl)
         for i in list_content:  # convert list to simple string ! its not a efficient way ;)
-            nothing = nothing + i + " "
+            nothing = nothing + i + ", "
         return nothing
 
 
 def save_db(box, disk):
-    box_obj = Box.objects.get(box_no=box)
-    if box_obj:
-        #xoxo = Box.objects.get(box_no=box)
+    try:
+        box_obj = Box.objects.get(box_no=box)
         a = Disk(disk_no=box_obj, serial=disk, contents=hiren())
         a.save()
-    else:
+    except:
         b = Box(box_no=box)
         b.save()
         xoxo = Box.objects.get(box_no=box)   # need some optimization
-        a = Disk(disk_no=xoxo, serial=disk, contents=hiren())
-        a.save()
+        hire = Disk(disk_no=xoxo, serial=disk, contents=hiren())
+        hire.save()
