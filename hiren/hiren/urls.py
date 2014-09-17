@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     url(r"^search$", 'disk.views.search'),
     url(r"^add$", 'disk.views.add'),
     url(r"^json$", 'disk.views.json'),
+    url(r"^eject$", 'disk.views.eject'),
     url(r"^browse/(?P<disk>\d+)/$", 'disk.views.disk_names'),
 )
