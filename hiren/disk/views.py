@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.core import serializers
 from .disk import save_db
-
+from os import system
 
 def index(request):
     return render(request, 'index.html')
@@ -69,3 +69,8 @@ def search(request):
 def json(request):
     data = serializers.serialize("json", Disk.objects.all())
     return HttpResponse(data)
+
+
+def eject(request):
+    system('eject')
+    return redirect('/add')
