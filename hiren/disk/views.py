@@ -21,7 +21,7 @@ def disk_names(request, disk):
     if names:
         return render(request, 'names.html', {'names': names})
     else:
-        return HttpResponse("Ops Something wrong happend") #TODO 404
+        return HttpResponse(status=404) #TODO 404
 
 
 def login(request):
