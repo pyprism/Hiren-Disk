@@ -63,7 +63,7 @@ def search(request):
         boxs = Box.objects.values('box_no', 'created_at')
         search_term = request.POST.get('search', models=(Box.objects.values('box_no'),))
         result = Disk.objects.search(search_term)
-        return render(request, 'browse.html', {'search' : result, 'boxs': boxs})
+        return render(request, 'browse.html', {'search': result, 'boxs': boxs})
 
 
 def json(request):
@@ -74,3 +74,23 @@ def json(request):
 def eject(request):
     system('eject')
     return redirect('/add')
+
+
+def edit(request, ids):
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            serial = request.POST.get('serial')
+            contents = request.POST.get('contents')
+            ids = request.POST.get('id')
+            obj = Disk.objects.get(id=ids)
+            obj.serial = serial
+            obj.contents = contents
+            obj.save()
+            return redirect('/browse')
+        else:
+            nisha = Disk.objects.get(id=ids)
+            return render(request, 'update.html', {'data': nisha})
+
+
+def delete(request, ids):
+    pass
