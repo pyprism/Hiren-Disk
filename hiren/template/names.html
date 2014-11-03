@@ -6,13 +6,22 @@
     <tr>
        <td>Disk No.</td>
        <td>Disk's Contents</td>
+        {% if user.is_authenticated %}
+        <td>Edit/Delete</td>
+        {% endif %}
     </tr>
    </thead>
    <tbody>
    {% for i in names %}
     <tr>
         <td>{{ i.serial }}</td>
-        <td>{{ i.contents }}</td>
+        <td id="edit">{{ i.contents }}</td>
+        {% if user.is_authenticated %}
+        <td>
+            <a href="/browse/id/{{ i.id }}/edit"><button class="btn-default btn btn-xs">Edit</button></a>
+            <a href="/browse/id/{{ i.id }}/delete"><button class="btn-default btn btn-xs">Delete</button></a>
+        </td>
+        {% endif %}
     </tr>
    {% endfor %}
    </tbody>
