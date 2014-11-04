@@ -6,6 +6,10 @@ from django.http import HttpResponse
 from django.core import serializers
 from .disk import save_db
 from os import system
+from django.shortcuts import render_to_response
+
+from .forms import NotesSearchForm
+
 
 def index(request):
     return render(request, 'index.html')
@@ -60,10 +64,16 @@ def add(request):
 
 def search(request):
     if request.method == 'POST':
-        boxs = Box.objects.values('box_no', 'created_at')
-        search_term = request.POST.get('search', models=(Box.objects.values('box_no'),))
-        result = Disk.objects.search(search_term)
-        return render(request, 'browse.html', {'search': result, 'boxs': boxs})
+        #boxs = Box.objects.values('box_no', 'created_at')
+        #search_term = request.POST.get('search', models=(Box.objects.values('box_no'),))
+        #result = Disk.objects.search(search_term)
+        term = request.POST.get('search')
+        try:
+            result = Disk.objects.get(contents__exact=term)
+        except Disk.DoesNotExist:
+            print("Asa")
+        print(result)
+        return render(request, 'browse.html', {'search': result})
 
 
 def json(request):
@@ -97,3 +107,12 @@ def delete(request, ids):
         obj = Disk.object.get(id=ids)
         obj.delete()
         return redirect("/browse")
+
+
+
+
+def search(request):
+    form = NotesSearchForm(request.GET)
+    notes = form.search()
+    print(notes)
+    return render(request, 'search/notes.html', {'notes': notes})
