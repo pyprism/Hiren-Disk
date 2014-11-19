@@ -24,7 +24,8 @@ def hiren():
         list_content = os.listdir("/media/"+getpass.getuser()+"/"+dvdurl)
         for i in list_content:  # convert list to simple string ! its not a efficient way ;)
             nothing = nothing + i + ", "
-        return nothing
+        nisha = nothing.rstrip(', ')
+        return nisha
 
 
 def save_db(box, disk):
