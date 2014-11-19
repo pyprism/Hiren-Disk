@@ -104,7 +104,7 @@ def edit(request, ids):
 
 def delete(request, ids):
     if request.user.is_authenticated():
-        obj = Disk.object.get(id=ids)
+        obj = Disk.objects.get(id=ids)
         obj.delete()
         return redirect("/browse")
 
