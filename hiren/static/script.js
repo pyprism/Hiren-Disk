@@ -14,4 +14,8 @@ $(document).ready(function() {
        simpleStorage.set("disk", $('#disk').val, {TTL: 1000000});
        simpleStorage.set("box", $('#box').val, {TTL: 10000000});
     });
+
+    $('#edit').hover(function(){
+         console.log('s')
+    });
 });
