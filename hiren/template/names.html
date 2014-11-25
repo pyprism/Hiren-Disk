@@ -26,4 +26,7 @@
    {% endfor %}
    </tbody>
 </table>
+{% if user.is_authenticated %}
+<button type="button" class="btn btn-default"><a href="#">Add Manually</a></button>
+{% endif %}
 {% endblock %}
