@@ -78,7 +78,7 @@ DATABASES = {
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'NAME': 'hiren_disk',
         'USER': 'prism',
-        'PASSWORD': 'prism2123',
+        'PASSWORD': '',
         'HOST': '',
         'PORT': '',
     }
